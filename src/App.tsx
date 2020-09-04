@@ -1,9 +1,15 @@
 import React from 'react';
 
 import Bin2Dec from './pages/Bin2Dec';
+import GlobalStyle from './styles/global';
 
 const App: React.FC = () => {
-  return <Bin2Dec />;
+  return (
+    <>
+      <GlobalStyle />
+      <Bin2Dec />
+    </>
+  );
 };
 
 export default App;

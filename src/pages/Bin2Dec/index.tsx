@@ -9,6 +9,7 @@ const Bin2Dec: React.FC = () => {
       <Header>
         <h2>Bin2Dec</h2>
         <img src={BinaryIcon} alt="Binary" />
+        <div />
       </Header>
 
       <Container>
