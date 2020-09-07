@@ -1,9 +1,43 @@
-import React from 'react';
+import React, { useCallback, useState, ChangeEvent, FormEvent } from 'react';
 import BinaryIcon from '../../assets/binary.svg';
 
-import { Container, Header, Form, ResultContainer } from './styles';
+import { Container, Header, Form, Input, ResultContainer } from './styles';
 
 const Bin2Dec: React.FC = () => {
+  const [inputValue, setInputValue] = useState('');
+  const [inputFocused, setInputFocused] = useState(false);
+  const [calculatedValue, setCalculatedValue] = useState(0);
+
+  const handleSubmit = useCallback(
+    (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+
+      const values = inputValue.split('');
+      values.reverse();
+
+      const newValues = [];
+
+      for (let i = 0; i < values.length; i += 1) {
+        const value = Number(values[i]) * 2 ** i;
+
+        newValues.push(value);
+      }
+
+      const decimal = newValues.reduce((value, total) => value + total);
+
+      setCalculatedValue(decimal);
+    },
+    [inputValue],
+  );
+
+  const handleInputChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  }, []);
+
+  const handleInputFocus = useCallback(() => {
+    setInputFocused(state => !state);
+  }, []);
+
   return (
     <>
       <Header>
@@ -13,18 +47,26 @@ const Bin2Dec: React.FC = () => {
       </Header>
 
       <Container>
-        <Form>
+        <Form onSubmit={handleSubmit} inputFocused={inputFocused}>
           <h1>Digite um número binário</h1>
 
-          <input type="number" value="101001" />
+          <Input
+            type="text"
+            pattern="[0-1]{1,8}"
+            title="Only binary numbers up to 8 digits allowed"
+            value={inputValue}
+            onFocus={handleInputFocus}
+            onBlur={handleInputFocus}
+            onChange={handleInputChange}
+          />
 
           <button type="submit">Converter para decimal</button>
         </Form>
 
-        <ResultContainer>
+        <ResultContainer decimalValue={calculatedValue}>
           <h1>Valor decimal equivalente</h1>
 
-          <span>41</span>
+          <span>{calculatedValue}</span>
         </ResultContainer>
       </Container>
     </>

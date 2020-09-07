@@ -1,4 +1,12 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+interface InputProps {
+  inputFocused?: boolean;
+}
+
+interface ResultContainerProps {
+  decimalValue: number;
+}
 
 export const Header = styled.header`
   display: flex;
@@ -35,7 +43,7 @@ export const Container = styled.div`
   justify-content: center;
 `;
 
-export const Form = styled.form`
+export const Form = styled.form<InputProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,10 +66,15 @@ export const Form = styled.form`
     font-size: 24px;
     color: #635959;
     letter-spacing: 5px;
-    border: none;
-    border: 2px solid #4542c9;
+    border: 1px solid #4542c9;
     margin: 20px;
     background: #f4f4f4;
+
+    ${props =>
+      props.inputFocused &&
+      css`
+        border: 2px solid #4542c9;
+      `}
   }
 
   input::-webkit-outer-spin-button,
@@ -86,14 +99,21 @@ export const Form = styled.form`
   }
 `;
 
-export const ResultContainer = styled.div`
-  /* display: flex; */
+export const Input = styled.input``;
+
+export const ResultContainer = styled.div<ResultContainerProps>`
   display: none;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   height: 180px;
   margin-top: 40px;
+
+  ${props =>
+    props.decimalValue &&
+    css`
+      display: flex;
+    `}
 
   h1 {
     color: #5b5b5b;
@@ -105,10 +125,12 @@ export const ResultContainer = styled.div`
     align-items: center;
     justify-content: center;
     background: #4542c9;
-    width: 180px;
+    min-width: 180px;
+    max-width: 260px;
     height: 100px;
     font-size: 56px;
     border-radius: 10px;
     color: #fff;
+    padding: 5px;
   }
 `;
