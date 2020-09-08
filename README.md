@@ -50,7 +50,7 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## Project screenshot
 
 [![Product Name Screen Shot][product-screenshot]]()
 
