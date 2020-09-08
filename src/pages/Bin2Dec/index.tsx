@@ -8,6 +8,9 @@ const Bin2Dec: React.FC = () => {
   const [inputFocused, setInputFocused] = useState(false);
   const [calculatedValue, setCalculatedValue] = useState(0);
 
+  /* This function handles the submit button click, it sees if input has valid
+     values, calculates all values of each position of binary array
+     and calculates the respective decimal value using array reduce method */
   const handleSubmit = useCallback(
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
@@ -32,6 +35,7 @@ const Bin2Dec: React.FC = () => {
     [inputValue],
   );
 
+  // This function handles input changes, allowing only to type 0 and 1
   const handleInputChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     const inputNumbers = e.target.value.split('');
 
@@ -44,6 +48,7 @@ const Bin2Dec: React.FC = () => {
     }
   }, []);
 
+  // This function is responsible only to manage the border of the input when its focused or not
   const handleInputFocus = useCallback(() => {
     setInputFocused(state => !state);
   }, []);
