@@ -31,7 +31,14 @@ const Bin2Dec: React.FC = () => {
   );
 
   const handleInputChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
+    const inputNumbers = e.target.value.split('');
+
+    if (
+      inputNumbers[inputNumbers.length - 1] === '1' ||
+      inputNumbers[inputNumbers.length - 1] === '0'
+    ) {
+      setInputValue(e.target.value);
+    }
   }, []);
 
   const handleInputFocus = useCallback(() => {
