@@ -4,7 +4,7 @@
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
-[![Twitter][twitter-shield]][twitter-url]
+<!-- [![Twitter][twitter-shield]][twitter-url] -->
 
 
 <!-- PROJECT LOGO -->
@@ -146,7 +146,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 LinkedIn - [@gabriel-dorneles](https://www.linkedin.com/in/gabriel-dorneles/)
 
-Twitter - [@G_Dorns](https://twitter.com/G_Dorns)
+<!-- Twitter - [@G_Dorns](https://twitter.com/G_Dorns) -->
 
 Project Link: [https://github.com/gabrieldorneles09/Binary2DecimalCalculator](https://github.com/gabrieldorneles09/Binary2DecimalCalculator)
 
