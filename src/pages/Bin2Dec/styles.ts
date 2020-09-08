@@ -102,17 +102,23 @@ export const Form = styled.form<InputProps>`
 export const Input = styled.input``;
 
 export const ResultContainer = styled.div<ResultContainerProps>`
-  display: none;
+  visibility: hidden;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   height: 180px;
   margin-top: 40px;
+  opacity: 0;
+  transform: translateY(20px);
 
   ${props =>
     props.decimalValue &&
     css`
-      display: flex;
+      transition: opacity 0.6s linear, transform 0.6s linear;
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
     `}
 
   h1 {

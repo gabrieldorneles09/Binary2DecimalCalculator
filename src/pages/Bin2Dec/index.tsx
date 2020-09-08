@@ -12,6 +12,8 @@ const Bin2Dec: React.FC = () => {
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
+      if (!inputValue) return;
+
       const values = inputValue.split('');
       values.reverse();
 
@@ -35,7 +37,8 @@ const Bin2Dec: React.FC = () => {
 
     if (
       inputNumbers[inputNumbers.length - 1] === '1' ||
-      inputNumbers[inputNumbers.length - 1] === '0'
+      inputNumbers[inputNumbers.length - 1] === '0' ||
+      !e.target.value
     ) {
       setInputValue(e.target.value);
     }
